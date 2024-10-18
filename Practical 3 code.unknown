@@ -1,0 +1,71 @@
+Practical 3 code:
+GCD.java code:
+
+package CalGCD;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.WebDriver;
+
+public class GCD 
+{
+	public static void main(String[] args) 
+	{
+		System.setProperty("webdriver.gecko.driver","F:\\TYCS A56\\STQA\\STQA JAR FILES\\geckodriver.exe");
+		
+		WebDriver driver = new FirefoxDriver();
+		
+		driver.get("F:\\TYCS A56\\STQA\\gcd.html");
+		driver.manage().window().maximize();
+		driver.findElement(By.name("n1")).sendKeys("30");
+		driver.findElement(By.name("n2")).sendKeys("56");
+		
+		driver.findElement(By.name("btn")).click();
+		
+		String result=driver.findElement(By.name("result")).getAttribute("value");
+		
+		System.out.println("GCD is : "+ result);
+	}
+}
+
+gcd.html code:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCD Count</title>
+	<script type="text/javascript">
+	function gcd()
+	{
+			var x,y;
+			x=parseInt(document.myform.n1.value);
+			y=parseInt(document.myform.n2.value);
+			while(x!=y)
+            {
+			    if(x>y)
+					x=x-y;
+				else
+					y=y-x;
+				}
+	
+	document.myform.result.value=x;
+	}
+	</script>
+	</head>
+<body>
+<center>
+    <h1>
+        Program to calculate GCD of two numbers
+    </h1>
+	<hr color=red>
+    <form name=myform>
+        Enter Number 1:<input type="text" name="n1" value=""><br><br>
+        Enter Number 2:<input type="text" name="n2" value=""><br><br>
+        <input type="button" name="btn" value="Get GCD" onclick="gcd()"><br> <br>
+        GCD:<input type="text" name="result" value="">
+    </form>
+</center>
+</body>
+</html>

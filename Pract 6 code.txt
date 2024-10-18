@@ -1,0 +1,38 @@
+Practical 06 Code:
+package Score60;
+
+import java.io.*;
+import jxl.Cell;
+import jxl.CellType;
+import jxl.Workbook;
+import jxl.Sheet;
+import jxl.read.biff.BiffException;
+
+
+public class Stud_Score 
+{
+	public void read() throws BiffException, IOException
+	{
+		File inputWorkbook = new File("E:\\TYCS A-56\\STQA PRACTICAL\\TenRecord.xls");
+		Workbook w;
+		int count = 0;
+		w = Workbook.getWorkbook(inputWorkbook);
+		Sheet sheet = w.getSheet(0);
+		for(int j = 0; j < sheet.getRows(); j++) 
+		{
+			Cell cell = sheet.getCell(4,j);
+
+			if(cell.getType()==CellType.NUMBER) 
+			{
+				if(Integer.parseInt(cell.getContents())>60)
+					count++;
+			}
+		}
+		System.out.println("Total Number of Students scored above 60 : "+count);
+	}
+	public static void main(String[] args) throws BiffException, IOException
+	{
+		Stud_Score ss = new Stud_Score();
+		ss.read()	
+	}
+}

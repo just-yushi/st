@@ -1,0 +1,36 @@
+package CheckBoxCount;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import java.util.List;
+
+public class CheckBox {
+
+	public static void main(String[] args) 
+	{
+		
+		System.setProperty("webdriver.gecko.driver", "E:\\TYCS A-56\\STQA PRACTICAL\\STQA JAR FILES\\geckodriver.exe");
+		
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("https://designsystem.digital.gov/components/checkbox/");
+		List<WebElement> element = driver.findElements(By.xpath("//input[@type='checkbox']"));
+		
+		int checkedCnt = 0;
+		int uncheckedCnt = 0;
+		
+		for (int i = 0; i < element.size(); i++)
+		{
+			if(element.get(i).isSelected() == true)
+				checkedCnt++;
+			else
+				uncheckedCnt++;
+		}
+		System.out.println("Number of Checkboxes are : " +checkedCnt);
+		System.out.println("Number of Uncheckboxes are : " +uncheckedCnt);
+		
+	}
+
+}

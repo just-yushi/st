@@ -1,0 +1,29 @@
+package ComboList;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import java.util.*;
+
+public class CBList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.gecko.driver", "E:\\TYCS A-56\\STQA PRACTICAL\\STQA JAR FILES\\geckodriver.exe");
+		
+		FirefoxDriver driver = new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://login.yahoo.com/account/create");
+		Select oselect = new Select(driver.findElement(By.xpath("//select[@id='usernamereg-month']")));
+		List<WebElement> osize = oselect.getOptions();
+		int listSize = osize.size();
+		System.out.println("Total No of Elements : "+listSize);
+		
+		for (int i=0; i < listSize; i++)
+		{
+			String s = oselect.getOptions().get(i).getText();
+			System.out.println(s);
+		}11:10 03-07-2024
+	}
+}

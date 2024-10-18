@@ -1,0 +1,24 @@
+
+package linkcount;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class LinkCount {
+
+    public static void main(String[] args) {
+        System.setProperty("webdriver.gecko.driver", "E:\\TYCS A-56\\STQA PRACTICAL\\STQA JAR FILES\\geckodriver.exe");
+        FirefoxDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.microsoft.com");
+		java.util.List<WebElement>
+		link = driver.findElements(By.tagName("a"));
+		System.out.println("Total links are:"+link.size());
+		for(int i=0;i<link.size();i++)
+		{
+            System.out.println("Link :"+i+"Link.Name:"+link.get(i).getText());
+
+		}
+    } 
+}
